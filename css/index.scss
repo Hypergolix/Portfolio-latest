@@ -1,0 +1,552 @@
+@import 'extra/fontStyle';
+@import 'extra/button';
+@import 'extra/gfx';
+@import 'extra/responsive';
+html {
+    // width: calc(100vw - 10px);
+    scroll-behavior: smooth;
+}
+
+.anchor {
+    position: relative;
+    top: -100px;
+}
+
+.anchor2 {
+    position: relative;
+    top: -70px;
+}
+
+h1 {
+    //color: #000;
+    font-family: "Rokkitt", serif;
+    line-height: normal;
+    font-size: 32px;
+}
+
+.ball {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    background-color: rgba(255, 255, 255, 0.279);
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    // transform: translate();
+    transition-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+// Mixin for flex, direction
+// Mixin for other repetitions
+// Set Favicon
+body {
+    //overflow-x: hidden; // Not ideal but it hides offscreen items
+    // Above
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: calc(100vw - 10px);
+    height: 380vh;
+    background-color: #131313;
+    // font-family: "Spectral", serif;
+    // font-family: "Rokkitt", serif;
+    // font-family: "Roboto", sans-serif;
+    font-family: "Chivo", sans-serif;
+}
+
+// Header
+.navBar__Top {
+    background-color: #131313;
+    box-shadow: 0px 2px 5px #292929;
+    display: flex;
+    position: sticky;
+    align-self: flex-start;
+    top: 0;
+    flex-flow: row nowrap;
+    width: 100%;
+    // Allows for custom height header
+    height: 100%;
+    max-height: 60px;
+    z-index: 10;
+    // justify-content: space-evenly;
+    // May use a "cushion" to the right of midLinks
+    .navBar__titleLeft {
+        // This one could be absolute/relative as it doesn't really need to be responsive
+        // Or the current solution where its height is capped at 60px
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        // height: auto;
+        // OR
+        height: 60px;
+        width: auto;
+        flex-grow: 1; // HERE
+        // max-width: 250px;
+        .logoBG {
+            @include logoBackground();
+        }
+        a {
+            // Uppercase?
+            font-family: "Rokkitt", serif;
+            margin: 0px 0px 0px 15px;
+            line-height: normal;
+            font-size: 32px;
+        }
+    }
+    .navBar__linksMid {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        // Auto necessary? - isn't it default
+        height: auto;
+        width: auto;
+        max-width: 500px; // Use flex basis and shrink
+        //margin-right: 5vw;
+        flex-grow: 5; //Here
+        //margin-left: 20px;
+        li {
+            a {
+                text-transform: uppercase;
+                outline: none;
+            }
+            a:hover {
+                @include fontFade();
+            }
+            margin: 5px 10px 0px 0px;
+        }
+    }
+    .buffer {
+        // Acts like a "cushion" i suppose
+        height: 100%;
+        flex-grow: 0.75;
+    }
+    .btnDiv__right {
+        // Hitbox is a bit big
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include btn();
+        // Removes overflow
+        margin-top: 12px;
+        margin-right: 20px; // 5px
+    }
+}
+
+// Navbar in side mode animation. Mixin can't take child as variable
+.navBar__Top #midLinks.responsive> :nth-child(1) {
+    @include slideTop(0s);
+}
+
+.navBar__Top #midLinks.responsive> :nth-child(2) {
+    @include slideTop(0.15s);
+}
+
+.navBar__Top #midLinks.responsive> :nth-child(3) {
+    @include slideTop(0.3s);
+}
+
+.navBar__Top #midLinks.responsive> :nth-child(4) {
+    @include slideTop(0.45s);
+}
+
+// FIX the navlinks spacing and response/interaction
+#shape.slideIn {
+    position: unset;
+    visibility: visible;
+    transition-duration: 1s;
+    //transition-timing-function: ease;
+    transform: translateX(calc(-50vw + 37.5vw)); // + half width of object
+}
+
+main {
+    display: flex;
+    flex-flow: column nowrap;
+    // justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 380vh;
+    .main__about {
+        //border: solid #fff 1px;   // Maybe just a 1px border on the right side
+        display: flex;
+        flex-flow: row nowrap;
+        //position: absolute;
+        justify-content: space-between;
+        align-items: center;
+        //visibility: hidden; // Not exactly necessary as it's off-screen
+        //align-self: flex-end;
+        width: 75vw;
+        height: calc(100vh - 60px);
+        //transform: translateX(75vw);
+        //background-color: #fff;
+        //max-height: 250px;
+        max-width: 750px;
+        .leonImg {
+            //height: 87.5%;
+            height: 200px;
+            width: 30%;
+            background-image: url("../img/leon-crop.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+        .aboutTxt {
+            //margin-left: 10px;
+            height: 100%;
+            //width: 70%;
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            // justify-content: space-evenly;
+            justify-content: center;
+            .aboutTxt__links {
+                margin-top: 20px;
+                display: flex;
+                flex-flow: row nowrap;
+                width: 100%;
+                justify-content: flex-start;
+                .btn {
+                    width: 64px;
+                    height: 64px;
+                    border-radius: 8px;
+                    background-color: #fff;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    margin-right: 12px;
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+                .links__github {
+                    background-image: url("../img/github-square-512.webp");
+                    background-size: 130% 130%;
+                    background-position: 50% 60%;
+                    .cover {
+                        position: relative;
+                        display: block;
+                        height: 8px;
+                        width: 100%;
+                        margin-top: 56px;
+                        background-color: #000;
+                        border-radius: 0px 0px 8px 8px;
+                    }
+                }
+                .links__linkedin {
+                    background-image: url("../img/linkedin_logo_icon_143562.png");
+                    background-size: cover;
+                }
+            }
+        }
+    }
+}
+
+.main__technologies {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    max-width: 750px;
+    width: 75vw;
+    h1 {
+        margin-bottom: 60px;
+    }
+    .technologies__container {
+        display: flex;
+        flex-flow: row nowrap;
+        height: 100%;
+        justify-content: space-between;
+        width: 100%;
+        .tech_shared {
+            display: flex;
+            width: 30%;
+            height: 100%;
+            // background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            h2 {
+                font-size: 24px;
+                line-height: 44px;
+                margin-bottom: 20px;
+                // text-align: center;
+            }
+        }
+        .technologies__frontend {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+.technologies__card {
+    height: 40px;
+    width: 100%;
+    // background-color: rgba(217, 23, 251, 0.228);
+    display: flex;
+    flex-flow: row nowrap;
+    // justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    .card-image {
+        height: 100%;
+        // not ideal - experimental
+        aspect-ratio: 1;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    p {
+        margin-left: 20px;
+        // width: 100px;
+        text-align: left;
+    }
+}
+
+.main__projects {
+    display: flex;
+    flex-flow: column;
+    max-width: 750px;
+    width: 75vw;
+    .projects__title {
+        margin-bottom: 50px;
+        // line-height: 50px;
+    }
+    .projects__container {
+        border: solid 2px #000;
+        display: flex;
+        flex-flow: row nowrap;
+        width: 100%;
+        height: 200px;
+        margin-bottom: 20px;
+        // background-color: #ffffff;
+        // opacity: 0.8;
+        // margin-left: -100px;
+        border-radius: 10px;
+        overflow: hidden;
+        justify-content: space-between;
+        padding-right: 60px;
+        // span {
+        //     width: 70px;
+        //     height: 100%;
+        //     background-color: #ffffff;
+        //     display: block;
+        //     position: relative;
+        //     opacity: 0.8;
+        // }
+        .imgcontainer {
+            // margin-top: -10px;
+            margin-left: -80px;
+            height: 100%;
+            margin-right: 20px;
+        }
+    }
+}
+
+.gif {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+}
+
+.projects__text {
+    display: flex;
+    flex-direction: column;
+    //line-break: auto;
+    // width: 100px;
+    max-width: 400px;
+    h2,
+    p {
+        word-break: normal;
+        white-space: normal;
+    }
+    h2 {
+        color: #ffffff;
+        font-size: 30px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        line-height: 44px;
+    }
+    p {
+        color: #474747;
+    }
+}
+
+.linkcontainer {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    a {
+        line-height: 30px;
+        width: 50px;
+        text-align: center;
+        border-radius: 2px;
+        background-color: #2c2c2c;
+        margin-right: 20px;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    p {
+        line-height: 30px;
+        margin-right: 10px;
+    }
+}
+
+.main__tag-container {
+    display: flex;
+    flex-flow: row nowrap;
+    // background-color: #2c2c2c;
+    .tag-container {
+        display: flex;
+        flex-flow: row nowrap;
+        // background-color: #292929;
+        height: 30px;
+        width: auto;
+        align-items: center;
+        .circle {
+            border-radius: 100%;
+            height: 50%;
+            aspect-ratio: 1;
+            margin-right: 5px;
+        }
+    }
+}
+
+#CPP {
+    background-color: #ca00c3;
+}
+
+#JS {
+    background-color: #a5c600;
+}
+
+#HTML {
+    background-color: #cf3b00;
+}
+
+#CSS {
+    background-color: #6900c5;
+}
+
+#TS {
+    background-color: #0081dd;
+}
+
+#CS {
+    background-color: #1d9d00;
+}
+
+#C {
+    background-color: #505050;
+}
+
+//
+#gif1 {
+    opacity: 0.8;
+}
+
+#gif2 {
+    width: 270px;
+    opacity: 0.8;
+    margin-right: 20px;
+}
+
+#gif3 {
+    margin-left: 235px;
+    opacity: 0.8;
+}
+
+#gif4 {
+    opacity: 0.8;
+    transform: rotate(-90deg);
+    margin-left: 195px;
+}
+
+#exception {
+    background-color: #ffffff;
+    opacity: 0.8;
+    margin-right: 0px;
+}
+
+// Images - move this later
+#cardimage1 {
+    background-image: url("../img/icons/Typescript_logo_2020.svg.png");
+}
+
+#cardimage2 {
+    background-image: url("../img/icons/React-icon.svg.png");
+}
+
+#cardimage3 {
+    background-image: url("../img/icons/BrandBlazor_nohalo_1000x.png");
+}
+
+#cardimage4 {
+    background-image: url("../img/icons/html5-512.png");
+    //border-radius: 100%;
+}
+
+#cardimage5 {
+    background-image: url("../img/icons/logo-2582747_1280.png");
+    background-size: 110% 110%;
+}
+
+#cardimage6 {
+    background-image: url("../img/icons/sass.png");
+}
+
+#cardimage11 {
+    background-image: url("../img/icons/NET_Core_Logo.svg.png");
+}
+
+#cardimage12 {
+    background-image: url("../img/icons/C_Logo.png");
+}
+
+#cardimage13 {
+    background-image: url("../img/icons/ef-core-featured.png");
+    background-size: cover;
+    background-position: -24px;
+    border-radius: 100%;
+}
+
+#cardimage14 {
+    background-image: url("../img/icons/Csharp_Logo.png");
+    background-size: 170% 170%;
+}
+
+#cardimage15 {
+    background-image: url("../img/icons/Microsoft_Azure.svg.png");
+}
+
+#cardimage16 {
+    background-image: url("../img/icons/sql-server-icon-png-1.png");
+}
+
+#cardimage21 {
+    background-image: url("../img/icons/Brand_Visual_Studio_Win_2019.png");
+}
+
+#cardimage22 {
+    background-image: url("../img/icons/vscode.png");
+}
+
+#cardimage23 {
+    background-image: url("../img/icons/OTgxd3mt_400x400.jpg");
+    border-radius: 100%;
+}
+
+#cardimage24 {
+    background-image: url("../img/icons/GitHub-Mark.png");
+    border-radius: 100%;
+    background-size: 110% 110%;
+}
+
+// H2 is default white? Check and fix this
+// why is text not wrapping by default
+// Current set up is slide in. Decide on this
+// Write mixin for the slide in.
+// Width variable so it can auto work out the distance to move

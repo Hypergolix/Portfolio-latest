@@ -1,0 +1,49 @@
+@media screen and (max-width: 1024px) {
+  #navigation .navBar__titleLeft {
+    -webkit-box-flex: 5;
+        -ms-flex-positive: 5;
+            flex-grow: 5;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navBar__Top #midLinks {
+    position: absolute;
+    visibility: hidden;
+  }
+  .navBar__Top #midLinks li {
+    position: absolute;
+    visibility: hidden;
+    -webkit-transform: translateY(-8px);
+            transform: translateY(-8px);
+  }
+  .navBar__Top #btnContainer {
+    display: unset;
+  }
+  .technologies__card p {
+    visibility: hidden;
+    width: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navBar__Top #midLinks.responsive {
+    height: 120px;
+    top: 80px;
+    right: 15px;
+    margin-right: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: column nowrap;
+            flex-flow: column nowrap;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    visibility: visible;
+    background-color: #131313;
+  }
+}
+/*# sourceMappingURL=responsive.css.map */

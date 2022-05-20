@@ -1,0 +1,66 @@
+@mixin animationSettings($duration) {
+  animation-delay: 0s;
+  animation-duration: $duration;
+  animation-direction: normal; // alternate
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+@mixin logoBackground() {
+  position: absolute;
+  z-index: -1;
+  top: 10px;
+  left: 180px;
+  width: 40px;
+  height: 40px;
+  background-size: 400% 200%;
+  background-image: linear-gradient(to bottom right, #00eeff, #ff47f6 80%);
+  animation-name: fadeBG;
+  @include animationSettings(8s);
+  @keyframes fadeBG {
+    0%,
+    100% {
+      // These could be functions/mixins too if used again
+      background-position: 20%;
+      border-radius: 0% 0% 0% 0% / 0% 0% 0% 0%;
+    }
+    50% {
+      background-position: 90%;
+      border-radius: 100% 100% 100% 100% / 100% 100% 100% 100%;
+    }
+  }
+}
+
+@mixin fontFade() {
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-image: -webkit-linear-gradient(right, #00eeff, #ff47fe 80%);
+  animation-delay: 0s;
+  animation-duration: 2s;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-name: fadeForward;
+  background-size: 400% 200%;
+  @keyframes fadeForward {
+    // Right now this animation is almost the same as playing it forwards then backwards
+    0%,
+    100% {
+      background-position: 30%;
+    }
+    50% {
+      background-position: 90%;
+    }
+  }
+}
+
+// Can the delay be worked out by using the childNr?
+@mixin slideTop($delay) {
+  position: unset;
+  visibility: visible;
+  transform: translateY(0px);
+  transition-delay: $delay;
+  transition-duration: 1s;
+}
+
+// ADD menu animation when it opens
+// One row fades in at a time OR one at a time slides in from the right

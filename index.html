@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!--Would rather have all in one file but responsive needs to be the last imported file -->
+    <!--<link rel="stylesheet" href="css/responsive.css">-->
+    <title>Home - Leon Jardevall</title>
+</head>
+
+<body>
+    <script src="js/script.js "></script>
+    <header class="navBar__Top " id="navigation">
+        <div class="navBar__titleLeft ">
+            <div class="logoBG "></div>
+            <a href="index.html ">Leon Jardevall.</a>
+        </div>
+        <ul class="navBar__linksMid " id="midLinks">
+            <li><a href="#">About</a></li>
+            <li><a href="#tech">Tech Stack</a></li>
+            <li><a href="#project">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="buffer "></div>
+        <div class="btnDiv__right " id="btnContainer">
+            <div class="btn " onclick="toggleMenu() ">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <!-- <span class="ball " id="ball "></span> -->
+        <div class="main__about " id="about">
+            <div class="aboutTxt ">
+                <h1>Hi! I'm Leon, <br> a Full-Stack .NET Developer</h1>
+                <div class="aboutTxt__links">
+                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/Hypergolix?tab=repositories" class="links__github btn"><span class="cover"></span></a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/Hypergolix?tab=repositories" class="links__linkedin btn"></a>
+                </div>
+            </div>
+        </div>
+        <div class="anchor" id="tech"></div>
+        <div class="main__technologies ">
+            <h1>Technologies</h1>
+            <div class="technologies__container">
+                <div class="technologies__frontend tech_shared">
+                    <h2>Frontend</h2>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage1"></div>
+                        <p>Typescript</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage2"></div>
+                        <p>React</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage3"></div>
+                        <p>Razor pages</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage4"></div>
+                        <p>HTML</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage5"></div>
+                        <p>CSS</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage6"></div>
+                        <p>SCSS & Sass</p>
+                    </div>
+                </div>
+
+                <div class="technologies__backend tech_shared">
+                    <h2>Backend</h2>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage11"></div>
+                        <p>.NET</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage13"></div>
+                        <p>EF</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage12"></div>
+                        <p>C/C++</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage14"></div>
+                        <p>C#</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage15"></div>
+                        <p>Azure</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage16"></div>
+                        <p>SQL</p>
+                    </div>
+                </div>
+
+                <div class="technologies__toolchain tech_shared">
+                    <h2>Toolchain</h2>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage21"></div>
+                        <p>Visual Studio</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage22"></div>
+                        <p>VS Code</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage23"></div>
+                        <p>Azure Data</p>
+                    </div>
+                    <div class="technologies__card">
+                        <div class="card-image" id="cardimage24"></div>
+                        <p>Git & Github</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="anchor2" id="project"></div>
+        <div class="main__projects">
+            <h1 class="projects__title">Projects</h1>
+            <div class="projects__container">
+                <div class="imgcontainer"><img src="/vid/ezgif-2-da71063113.gif" class="gif" id="gif1"></div>
+                <div class="projects__text">
+                    <h2>Sorting Algorithm</h2>
+                    <p>
+                        A bubble sort algorithm written in C++ using the SFML multi-media library for rendering
+                    </p>
+                    <div class="linkcontainer">
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Hypergolix/SortingAlgos_SFML">Repo</a>
+                        <div class="main__tag-container">
+                            <p>Tags: </p>
+                            <div class="tag-container">
+                                <span class="circle" id="CPP"></span>
+                                <p>C++</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects__container">
+                <img src="/vid/weather.png" class="gif" id="gif2">
+                <div class="projects__text">
+                    <h2>React Weather App</h2>
+                    <p>A weather app using the openweather API and Google's geocoding API, built in React</p>
+                    <div class="linkcontainer">
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Hypergolix/project_alert_snowfall">Repo</a>
+                        <div class="main__tag-container">
+                            <p>Tags: </p>
+                            <div class="tag-container">
+                                <span class="circle" id="JS"></span>
+                                <p>JavaScript</p>
+                            </div>
+                            <div class="tag-container">
+                                <span class="circle" id="HTML"></span>
+                                <p>HTML</p>
+                            </div>
+                            <div class="tag-container">
+                                <span class="circle" id="CSS"></span>
+                                <p>CSS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects__container">
+                <div class="imgcontainer" id="exception"><img src="/vid/demo.gif" class="gif" id="gif3"></div>
+                <div class="projects__text">
+                    <h2>Foodstack</h2>
+                    <p>
+                        A final project for Salt, created by our mob group - syntactic sugar. It's an app that finds recipes based on ingredients you give it
+                    </p>
+                    <div class="linkcontainer">
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/omidhq/foodstack.api">Repo</a>
+                        <div class="main__tag-container">
+                            <p>Tags: </p>
+                            <div class="tag-container">
+                                <span class="circle" id="TS"></span>
+                                <p>TypeScript</p>
+                            </div>
+                            <div class="tag-container">
+                                <span class="circle" id="CS"></span>
+                                <p>C#</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects__container">
+                <div class="imgcontainer"><img src="/vid/ezgif-2-ecf6a0ffd2.gif" class="gif" id="gif4"></div>
+                <div class="projects__text">
+                    <h2>Embedded drivers</h2>
+                    <p>
+                        A library written from scratch for the Atmega328p (also exists for Arduino), it features a simple font and functions to represent strings on the display
+                    </p>
+                    <div class="linkcontainer">
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/Hypergolix/AVR8_TWI">Repo</a>
+                        <div class="main__tag-container">
+                            <p>Tags: </p>
+                            <div class="tag-container">
+                                <span class="circle" id="C"></span>
+                                <p>C</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

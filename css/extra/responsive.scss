@@ -1,0 +1,44 @@
+// For some reason media queries require specific referencing - ID
+@media screen and (max-width: 1024px) {
+    #navigation .navBar__titleLeft {
+        flex-grow: 5;
+    }
+}
+
+@media screen and (max-width: 900px) {}
+
+@media screen and (max-width: 768px) {
+    // Has to be referenced by ID? Added parent element class for clarity
+    .navBar__Top #midLinks {
+        position: absolute;
+        visibility: hidden;
+        li {
+            position: absolute;
+            visibility: hidden;
+            transform: translateY(-8px);
+        }
+    }
+    .navBar__Top #btnContainer {
+        display: unset;
+    }
+    .technologies__card p {
+        visibility: hidden;
+        width: 10px;
+    }
+}
+
+// Also close the menu when going above
+@media screen and (max-width: 768px) {
+    .navBar__Top #midLinks.responsive {
+        // This seems OK as it's small values
+        height: 120px;
+        top: 80px;
+        right: 15px;
+        margin-right: 0px;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: flex-end;
+        visibility: visible;
+        background-color: #131313;
+    }
+}
